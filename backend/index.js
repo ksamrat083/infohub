@@ -1,7 +1,3 @@
-// =====================================================
-// InfoHub Backend - Node.js + Express
-// =====================================================
-
 import express from "express";
 import cors from "cors";
 import axios from "axios";
@@ -12,13 +8,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// -----------------------------------------------------
-// Weather API
-// -----------------------------------------------------
 app.get("/api/weather", async (req, res) => {
   const city = req.query.city || "Delhi";
   const key = process.env.OPENWEATHER_KEY;
@@ -43,7 +35,6 @@ app.get("/api/weather", async (req, res) => {
     console.error("Weather API error:", err.message);
   }
 
-  // Fallback mock weather
   const mock = {
     city,
     country: "IN",
@@ -55,9 +46,6 @@ app.get("/api/weather", async (req, res) => {
   res.json(mock);
 });
 
-// -----------------------------------------------------
-// Currency Conversion API (robust + fallback)
-// -----------------------------------------------------
 app.get("/api/convert", async (req, res) => {
   const from = (req.query.from || "INR").toUpperCase();
   const to = (req.query.to || "USD").toUpperCase();
@@ -87,7 +75,6 @@ app.get("/api/convert", async (req, res) => {
     console.error("Exchange API error:", error.message);
   }
 
-  // fallback mock conversion
   const fallbackRates = { USD: 0.012, EUR: 0.011 };
   const rate = fallbackRates[to] || 1;
   const result = +(amount * rate).toFixed(4);
@@ -100,9 +87,6 @@ app.get("/api/convert", async (req, res) => {
   });
 });
 
-// -----------------------------------------------------
-// Motivational Quote API (robust + fallback)
-// -----------------------------------------------------
 app.get("/api/quote", async (req, res) => {
   const defaultList = [
     { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
@@ -125,21 +109,14 @@ app.get("/api/quote", async (req, res) => {
     console.error("Quote API error:", err.message);
   }
 
-  // fallback local quote
   const q = defaultList[Math.floor(Math.random() * defaultList.length)];
   res.json(q);
 });
 
-// -----------------------------------------------------
-// Root route
-// -----------------------------------------------------
 app.get("/", (req, res) => {
   res.json({ message: "InfoHub Backend is running 🚀" });
 });
 
-// -----------------------------------------------------
-// Start Server
-// -----------------------------------------------------
 app.listen(PORT, () => {
   console.log(`✅ Backend running on port ${PORT}`);
 });
