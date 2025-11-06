@@ -80,7 +80,7 @@ OPENWEATHER_KEY=449a912d92f755d916f6bb0062034faf
 USE_REAL_EXCHANGE=true
 QUOTE_API_URL=https://api.quotable.io/random
 PORT=4000
-
+```
 ⚠️ Keep .env private — do not push it to GitHub.
 
 
@@ -88,16 +88,22 @@ PORT=4000
 
 To run the project locally using Git Bash:
 # 1️⃣ Clone the repository
+```
 git clone https://github.com/<your-username>/InfoHub.git
 cd InfoHub
+```
 
 # 2️⃣ Install dependencies
+```
 npm install
+```
 
 # 3️⃣ Add your .env file (see above)
 
 # 4️⃣ Run locally
+```
 npm run dev
+```
 
 Then open the app in your browser at:
 👉 http://localhost:5173
