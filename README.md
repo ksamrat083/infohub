@@ -109,29 +109,24 @@ Then open the app in your browser at:
 👉 http://localhost:5173
 
 
-🚢 Deployment (Vercel):
-Push your repo to GitHub (single full-stack project).
+🚢 Deployment (Vercel)
 
-Go to https://vercel.com
+- Push your repo to GitHub (single full-stack project).
+- Go to https://vercel.com
  → New Project.
-
-Import your GitHub repository.
-
-Add environment variables (from .env).
+- Import your GitHub repository.
+- Add environment variables (from .env).
 
 Click Deploy.
-
 ✅ Vercel automatically builds both frontend and backend.
 
 
-🧠 Error Handling & Fallbacks:
-Each module includes built-in fallback logic:
+🧠 Error Handling & Fallbacks
 
-Weather → returns mock data if API unavailable.
-
-Converter → uses static rate if live API fails.
-
-Quotes → returns default motivational quote if API error.
+- Each module includes built-in fallback logic:
+- Weather → returns mock data if API unavailable.
+- Converter → uses static rate if live API fails.
+- Quotes → returns default motivational quote if API error.
 
 This ensures a smooth experience even with network/API issues.
 
