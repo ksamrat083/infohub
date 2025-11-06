@@ -8,7 +8,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({
+    origin: [
+      "http://localhost:5173",                     
+      "https://infohub-frontend-one.vercel.app",       
+    ],
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
 
 app.get("/api/weather", async (req, res) => {
@@ -87,31 +94,32 @@ app.get("/api/convert", async (req, res) => {
   });
 });
 
+import https from "https";
+
 app.get("/api/quote", async (req, res) => {
-  const defaultList = [
-    { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
-    { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
-    { text: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis" },
-    { text: "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
-  ];
-
   try {
-    const url = process.env.QUOTE_API_URL || "https://api.quotable.io/random";
-    const response = await axios.get(url, { timeout: 8000 });
+    const agent = new https.Agent({ rejectUnauthorized: false });
 
-    if (response.data && (response.data.content || response.data.text)) {
-      return res.json({
-        text: response.data.content || response.data.text,
-        author: response.data.author || "Unknown",
-      });
-    }
+    const response = await fetch(process.env.QUOTE_API_URL, { agent });
+    if (!response.ok) throw new Error("Quote API error");
+
+    const data = await response.json();
+
+    res.json({
+      text: data.content || "Keep going, you’re doing great!",
+      author: data.author || "Unknown",
+    });
   } catch (err) {
     console.error("Quote API error:", err.message);
-  }
 
-  const q = defaultList[Math.floor(Math.random() * defaultList.length)];
-  res.json(q);
+    res.json({
+      text: "The harder you work for something, the greater you’ll feel when you achieve it.",
+      author: "Anonymous",
+      note: "Using fallback quote",
+    });
+  }
 });
+
 
 app.get("/", (req, res) => {
   res.json({ message: "InfoHub Backend is running 🚀" });
