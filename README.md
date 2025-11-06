@@ -109,8 +109,7 @@ Then open the app in your browser at:
 👉 http://localhost:5173
 
 
-🚢 Deployment (Vercel)
-
+🚢 Deployment (Vercel):
 Push your repo to GitHub (single full-stack project).
 
 Go to https://vercel.com
@@ -125,8 +124,7 @@ Click Deploy.
 ✅ Vercel automatically builds both frontend and backend.
 
 
-🧠 Error Handling & Fallbacks
-
+🧠 Error Handling & Fallbacks:
 Each module includes built-in fallback logic:
 
 Weather → returns mock data if API unavailable.
@@ -139,8 +137,8 @@ This ensures a smooth experience even with network/API issues.
 
 
 👨‍💻 Author
-
+```
 Samrat Kavide
 Full Stack Developer | ByteXL Challenge Participant
-
+```
 🔗 https://infohub-nine-chi.vercel.app/
