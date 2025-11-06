@@ -10,7 +10,7 @@ Deployed live on **Vercel**, InfoHub demonstrates a seamless integration between
 ## 🚀 Live Demo
 
 - 🌍 **Live URL:** [https://infohub-nine-chi.vercel.app/](https://infohub-nine-chi.vercel.app/)  
-- 🎥 **Demo Video:** *(Add Google Drive link once uploaded)*
+- 🎥 **Demo Video:** [*(Add Google Drive link once uploaded)*](https://www.loom.com/share/16ee9f800bdd49b5a3ad3c2250ce5909)
 
 ---
 
