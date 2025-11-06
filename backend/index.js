@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 app.use(cors({
     origin: [
       "http://localhost:5173",                     
-      "https://infohub-nine-chi.vercel.app",       
+      "https://infohub-ptxzlqcef-ksamrat083s-projects.vercel.app/",       
     ],
     methods: ["GET", "POST"],
   })
